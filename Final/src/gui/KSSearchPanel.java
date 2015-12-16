@@ -9,8 +9,9 @@ import java.awt.event.*;
  * @author Karen Springford
  * @date December 9, 2015
  */
-public class KSSearchPanel extends JPanel {
+public class KSSearchPanel extends JPanel{
 
+    
     //*** Create the Components ***//
     private final JLabel lblFirstName, lblLastName, lblAge, lblPosition,
             lblEmployeeType, lblEmployeeID, lblHireYear, lblCommissionRate,
@@ -116,6 +117,7 @@ public class KSSearchPanel extends JPanel {
             }
         }
     }
+    //  ***  card layout within the tab *** //
     
 //    
 //        private class AddButtonHandler implements ActionListener
