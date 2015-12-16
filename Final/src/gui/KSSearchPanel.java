@@ -15,11 +15,14 @@ public class KSSearchPanel extends JPanel{
     //*** Create the Components ***//
     private final JLabel lblFirstName, lblLastName, lblAge, lblPosition,
             lblEmployeeType, lblEmployeeID, lblHireYear, lblCommissionRate,
-            lblHourlyPay, lblSalary;
+            lblHourlyPay, lblSalary, lblProductName, lblProductID,lblProductPrice, 
+            lblManufacturer;
 
     //***  TEXT FIELDS  ***//
     private final JTextField txtFirstName, txtLastName, txtAge,
-            txtEmployeeID, txtCommissionRate, txtHourlyPay, txtSalary;
+            txtEmployeeID, txtCommissionRate, txtHourlyPay, txtSalary,
+            txtProductName, txtProductID,txtProductPrice, 
+            txtManufacturer;
 
     //***  DROP DOWN MENUS   ***//
     private final JComboBox<String> cmbYear, cmbPosition, cmbEmployeeType;
@@ -55,6 +58,13 @@ public class KSSearchPanel extends JPanel{
         lblCommissionRate = new JLabel("Commission Rate:");
         lblHourlyPay = new JLabel("Hourly Pay");
         lblSalary = new JLabel("Salary");
+        //*** Product Labels ***//
+        lblProductName = new JLabel("Product Name");
+        lblProductID = new JLabel("Product ID");
+        lblProductPrice = new JLabel("Product Sale Price");
+        lblManufacturer = new JLabel("Manufacturer");
+        
+        
 
         //***   INITIALIZE THE TEXT FIELDS   ***//
         txtFirstName = new JTextField(15);
@@ -64,6 +74,11 @@ public class KSSearchPanel extends JPanel{
         txtCommissionRate = new JTextField(15);
         txtHourlyPay = new JTextField(15);
         txtSalary = new JTextField(15);
+                //*** Product Texts ***//
+        txtProductName = new JTextField(20);
+        txtProductID = new JTextField(15);
+        txtProductPrice = new JTextField(10);
+        txtManufacturer = new JTextField(20);
 
         //***   COMBO BOX / DROP DOWN   ***//
         cmbYear = new JComboBox<String>(year);
@@ -79,7 +94,6 @@ public class KSSearchPanel extends JPanel{
         btnSearchEmployee.addActionListener(new BtnSearchEmployeeHandler());
         btnSearchProduct.addActionListener(new BtnSearchProductHandler());
 
-        //*****NO CLUE WHERE TO PUT THE LISTENER TO MAKE IT WORK???*****//
         
         
         add(btnSearchEmployee);
@@ -105,8 +119,19 @@ public class KSSearchPanel extends JPanel{
         add(txtHourlyPay);
         add(lblSalary);
         add(txtSalary);
+        
+        //*** Product Fields ***//
+        add(lblProductName);
+        add(txtProductName);
+        add(lblProductID);
+        add(txtProductID);
+        add(lblProductPrice);
+        add(txtProductPrice);
+        add(lblManufacturer);
+        add(txtManufacturer);
 
-        hidestuff(btnSearchEmployee.isSelected());
+        hideEmployee(btnSearchEmployee.isSelected());
+        hideProduct(btnSearchProduct.isSelected());
 
     }
 
@@ -115,7 +140,8 @@ public class KSSearchPanel extends JPanel{
         @Override
         public void actionPerformed(ActionEvent event) {
             if(btnSearchEmployee.isSelected()){
-            hidestuff(true);
+            hideEmployee(true);
+            hideProduct(false);
             }
         }
     }
@@ -125,23 +151,14 @@ public class KSSearchPanel extends JPanel{
         @Override
         public void actionPerformed(ActionEvent event) {
             if(btnSearchProduct.isSelected()){
-            hidestuff(true);
+            hideEmployee(false);
+            hideProduct(true);
             }
         }
     }
-    //  ***  card layout within the tab *** //
-    
-//    
-//        private class AddButtonHandler implements ActionListener
-//    {
-//        @Override
-//        public void actionPerformed(ActionEvent event)
-//        {
-//            JOptionPane.showMessageDialog(null, "You pressed the add button!");
-//        }
-//    }
 
-    public void hidestuff(boolean check) {
+
+    public void hideEmployee(boolean check) {
         lblFirstName.setVisible(check);
         txtFirstName.setVisible(check);
         lblLastName.setVisible(check);
@@ -163,9 +180,21 @@ public class KSSearchPanel extends JPanel{
         lblSalary.setVisible(check);
         txtSalary.setVisible(check);
 
+
+    }
+    
+    private void hideProduct(boolean check){
+
+        lblProductName.setVisible(check);
+        txtProductName.setVisible(check);
+        lblProductID.setVisible(check);
+        txtProductID.setVisible(check);
+        lblProductPrice.setVisible(check);
+        txtProductPrice.setVisible(check);
+        lblManufacturer.setVisible(check);
+        txtManufacturer.setVisible(check);
     }
 }
-
 
 
 
