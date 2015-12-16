@@ -76,6 +76,8 @@ public class KSSearchPanel extends JPanel{
         bg = new ButtonGroup();
         bg.add(btnSearchEmployee);
         bg.add(btnSearchProduct);
+        btnSearchEmployee.addActionListener(new BtnSearchEmployeeHandler());
+        btnSearchProduct.addActionListener(new BtnSearchProductHandler());
 
         //*****NO CLUE WHERE TO PUT THE LISTENER TO MAKE IT WORK???*****//
         
@@ -113,6 +115,16 @@ public class KSSearchPanel extends JPanel{
         @Override
         public void actionPerformed(ActionEvent event) {
             if(btnSearchEmployee.isSelected()){
+            hidestuff(true);
+            }
+        }
+    }
+    
+        private class BtnSearchProductHandler implements ActionListener {
+
+        @Override
+        public void actionPerformed(ActionEvent event) {
+            if(btnSearchProduct.isSelected()){
             hidestuff(true);
             }
         }
